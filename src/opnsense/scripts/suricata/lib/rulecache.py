@@ -34,7 +34,7 @@ import glob
 import sqlite3
 import shlex
 import fcntl
-from ConfigParser import ConfigParser
+from configparser import ConfigParser
 from lib import rule_source_directory
 
 
@@ -170,7 +170,7 @@ class RuleCache(object):
             os.remove(self.cachefile)
 
         db = sqlite3.connect(self.cachefile)
-        db.text_factory = lambda x: unicode(x, 'utf-8', 'ignore')
+        db.text_factory = lambda x: str(x, 'utf-8', 'ignore')
         cur = db.cursor()
 
         cur.execute("create table stats (timestamp number, files number)")
@@ -257,7 +257,7 @@ class RuleCache(object):
                     sql += ' and ( '
                 else:
                     sql += ' where ( '
-                for fieldname in map(lambda x: x.lower().strip(), fieldnames.split(',')):
+                for fieldname in [x.lower().strip() for x in fieldnames.split(',')]:
                     if fieldname in self._rule_fields or fieldname in additional_search_fields:
                         if fieldname != fieldnames.split(',')[0].strip():
                             sql += ' or '

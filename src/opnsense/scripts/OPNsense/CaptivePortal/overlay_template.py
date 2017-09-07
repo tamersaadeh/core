@@ -32,7 +32,7 @@
 import os
 import sys
 import zipfile
-import StringIO
+import io
 from lib import Config
 
 if len(sys.argv) > 1:
@@ -41,9 +41,9 @@ if len(sys.argv) > 1:
     target_directory = '/var/captiveportal/zone%s/htdocs/' % zoneid
     template_data = cnf.fetch_template_data(sys.argv[1])
     if template_data is not None and len(template_data) > 20:
-        print ('overlay user template package for zone %s' % zoneid)
+        print(('overlay user template package for zone %s' % zoneid))
         zip_content = template_data.decode('base64')
-        input_data = StringIO.StringIO(zip_content)
+        input_data = io.StringIO(zip_content)
         with zipfile.ZipFile(input_data, mode='r', compression=zipfile.ZIP_DEFLATED) as zf_in:
             for zf_info in zf_in.infolist():
                 if zf_info.filename[-1] != '/':
@@ -53,11 +53,11 @@ if len(sys.argv) > 1:
                         os.makedirs(file_target_directory)
                     with open(target_filename, 'wb') as f_out:
                         f_out.write(zf_in.read(zf_info.filename))
-                    os.chmod(target_filename, 0444)
+                    os.chmod(target_filename, 0o444)
     # write zone settings
     filename = '%sjs/zone.js' % target_directory
     with open(filename, 'wb') as f_out:
         f_out.write('var zoneid = %s' % zoneid)
-    os.chmod(filename, 0444)
+    os.chmod(filename, 0o444)
 
 sys.exit(0)

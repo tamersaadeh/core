@@ -49,14 +49,14 @@ for agg_class in lib.aggregates.get_aggregators():
 # output result
 if len(sys.argv) > 1 and 'json' in sys.argv:
     # json format
-    print(ujson.dumps(result))
+    print((ujson.dumps(result)))
 else:
     # plain text format
-    print ('Flowd aggregations [last sync %s]' %
+    print(('Flowd aggregations [last sync %s]' %
         datetime.datetime.fromtimestamp(result['last_sync']).strftime('%Y-%m-%d %H:%M:%S')
-    )
+    ))
     print ('\nAggregators:')
     for aggregator in result['aggregators']:
-        print ('  %s' % aggregator)
+        print(('  %s' % aggregator))
         for resolution in result['aggregators'][aggregator]['resolutions']:
-            print ('    + %d seconds' % resolution)
+            print(('    + %d seconds' % resolution))

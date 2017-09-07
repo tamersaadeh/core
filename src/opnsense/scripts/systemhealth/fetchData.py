@@ -49,5 +49,5 @@ if len(sys.argv) > 1:
                 subprocess.check_call(['/usr/local/bin/rrdtool', 'dump', rrdFilename],
                                       stdout=output_stream, stderr=subprocess.STDOUT)
                 output_stream.seek(0)
-                print (output_stream.read())
+                print((output_stream.read()))
             break

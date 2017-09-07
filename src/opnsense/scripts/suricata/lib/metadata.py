@@ -45,7 +45,7 @@ class Metadata(object):
         for filename in sorted(glob.glob('%s*.xml' % self._rules_dir)):
             try:
                 xml_data = open(filename).read()
-                for tag in replace_tags.keys():
+                for tag in list(replace_tags.keys()):
                     search_tag = '%%%%%s%%%%' % tag
                     if xml_data.find(search_tag) > -1:
                         xml_data = xml_data.replace(search_tag, replace_tags[tag])

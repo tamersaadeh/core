@@ -34,8 +34,8 @@
 """
 
 import ujson
-from lib.rulecache import RuleCache
-from lib.params import update_params
+from .lib.rulecache import RuleCache
+from .lib.params import update_params
 
 
 # Because rule parsing isn't very useful when the rule definitions didn't change we create a single json file
@@ -58,4 +58,4 @@ if __name__ == '__main__':
     # dump output
     result = rc.search(**parameters)
     result['parameters'] = parameters
-    print (ujson.dumps(result))
+    print((ujson.dumps(result)))

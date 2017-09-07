@@ -35,7 +35,7 @@ import ujson
 rrd_reports_dir = '/var/db/rrd'
 
 if len(sys.argv) < 2:
-    print ("usage %s rrd_filename" % os.path.basename(sys.argv[0]))
+    print(("usage %s rrd_filename" % os.path.basename(sys.argv[0])))
     sys.exit(-1)
 else:
     flushed = list()
@@ -43,4 +43,4 @@ else:
         if sys.argv[1] == '*' or os.path.basename(filename) == sys.argv[1]:
             os.remove(filename)
             flushed.append(os.path.basename(filename))
-    print (ujson.dumps({'flushed':flushed}))
+    print((ujson.dumps({'flushed':flushed})))

@@ -37,8 +37,8 @@ import ujson
 arp_list = ARP().list_items()
 if len(sys.argv) > 1 and sys.argv[1].trim().lower() == 'json':
     # dump as json
-    print(ujson.dumps(arp_list))
+    print((ujson.dumps(arp_list)))
 else:
     print ('------------------------- ARP table content -------------------------')
     for address in arp_list:
-        print ('[%10s] %-20s %-20s' % (arp_list[address]['intf'], address, arp_list[address]['mac']))
+        print(('[%10s] %-20s %-20s' % (arp_list[address]['intf'], address, arp_list[address]['mac'])))

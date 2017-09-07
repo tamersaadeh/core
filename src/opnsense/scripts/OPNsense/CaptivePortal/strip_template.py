@@ -33,7 +33,7 @@
 import sys
 import os.path
 import binascii
-import StringIO
+import io
 import zipfile
 import ujson
 from hashlib import md5
@@ -70,8 +70,8 @@ else:
 
 if 'error' not in response:
     exclude_list = load_exclude_list()
-    input_data = StringIO.StringIO(zip_content)
-    output_data = StringIO.StringIO()
+    input_data = io.StringIO(zip_content)
+    output_data = io.StringIO()
     with zipfile.ZipFile(input_data, mode='r', compression=zipfile.ZIP_DEFLATED) as zf_in:
         with zipfile.ZipFile(output_data, mode='w', compression=zipfile.ZIP_DEFLATED) as zf_out:
             # the zip content may be in a folder, use index to track actual location
@@ -104,4 +104,4 @@ if 'error' not in response:
             response['payload'] = output_data.getvalue().encode('base64').strip().replace('\n', '')
             response['size'] = len(response['payload'])
 
-print(ujson.dumps(response))
+print((ujson.dumps(response)))

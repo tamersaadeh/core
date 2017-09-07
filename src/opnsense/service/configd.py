@@ -69,7 +69,7 @@ def validate_config(cnf):
     """
     for config_item in ['socket_filename', 'pid_filename']:
         if cnf.has_section('main') == False or cnf.has_option('main', config_item) == False:
-            print('configuration item main/%s not found in %s/conf/configd.conf' % (config_item, program_path))
+            print(('configuration item main/%s not found in %s/conf/configd.conf' % (config_item, program_path)))
             sys.exit(0)
 
 
@@ -124,7 +124,7 @@ def run_watch():
 this_config = get_config()
 validate_config(this_config)
 if len(sys.argv) > 1 and 'console' in sys.argv[1:]:
-    print('run %s in console mode' % sys.argv[0])
+    print(('run %s in console mode' % sys.argv[0]))
     if 'profile' in sys.argv[1:]:
         # profile configd
         # for graphical output use gprof2dot:

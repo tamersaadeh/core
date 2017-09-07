@@ -51,4 +51,4 @@ if __name__ == '__main__':
                 lease = {'address': line.split()[0], 'status': line.split()[1], 'user': line.split("'")[1]}
                 result[current_pool] ['items'].append(lease)
 
-print(ujson.dumps(result))
+print((ujson.dumps(result)))

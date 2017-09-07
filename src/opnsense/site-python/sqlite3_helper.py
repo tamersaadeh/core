@@ -56,7 +56,7 @@ def check_and_repair(filename_mask):
             try:
                 cur.execute('pragma integrity_check')
                 cur.execute('analyze')
-            except sqlite3.DatabaseError, e:
+            except sqlite3.DatabaseError as e:
                 if e.message.find('malformed') > -1:
                     syslog.syslog(syslog.LOG_ERR, "sqlite3 repair %s" % filename)
                     filename_tmp = '%s.fix'%filename

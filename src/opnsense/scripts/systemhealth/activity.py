@@ -69,7 +69,7 @@ if __name__ == '__main__':
 
     if len(sys.argv) > 1 and sys.argv[1] == 'json':
         # output as json
-        print(ujson.dumps(result))
+        print((ujson.dumps(result)))
     else:
         # output plain (reconstruct data)
         for header_line in result['headers']:
@@ -82,6 +82,6 @@ if __name__ == '__main__':
                 format_str = '%s %%(%s)-%ds'%(format_str,fieldname, field_max_width[fieldname]+1)
                 header_fields[fieldname] = fieldname
 
-            print (format_str % header_fields)
+            print((format_str % header_fields))
             for detail_line in result['details']:
-                print (format_str % detail_line)
+                print((format_str % detail_line))

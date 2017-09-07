@@ -83,13 +83,13 @@ if valid_params:
                     break
             obj = agg_class(selected_resolution)
             result = obj.get_top_data(start_time, end_time, key_fields, value_field, data_filter, max_hits)
-    print (ujson.dumps(result))
+    print((ujson.dumps(result)))
 else:
     print ('missing parameters :')
     tmp = list()
     for key in app_params:
         tmp.append('/%s %s' % (key, app_params[key]))
-    print ('  %s %s'%(sys.argv[0], ' '.join(tmp)))
+    print(('  %s %s'%(sys.argv[0], ' '.join(tmp))))
     print ('')
     print ('  start_time : start time (seconds since epoch)')
     print ('  end_time : end timestamp (seconds since epoch)')

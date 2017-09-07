@@ -59,7 +59,7 @@ class CPBackgroundProcess(object):
     def list_zone_ids(self):
         """ return zone numbers
         """
-        return self._conf_zone_info.keys()
+        return list(self._conf_zone_info.keys())
 
     def initialize_fixed(self):
         """ initialize fixed ip / hosts per zone
@@ -239,7 +239,7 @@ def main():
             break
         except:
             syslog.syslog(syslog.LOG_ERR, traceback.format_exc())
-            print(traceback.format_exc())
+            print((traceback.format_exc()))
             break
 
 # startup

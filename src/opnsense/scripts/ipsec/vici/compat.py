@@ -7,8 +7,8 @@ try:
 except AttributeError:
     # python 3
     def iteritems(d):
-        return iter(d.items())
+        return iter(list(d.items()))
 else:
     # python 2
     def iteritems(d):
-        return d.iteritems()
+        return iter(d.items())

@@ -46,18 +46,18 @@ if not os.path.exists(target_directory):
 
 # start crawling
 crawler = DependancyCrawler(src_root)
-print '[%.2f] started ' % (time.time())
+print('[%.2f] started ' % (time.time()))
 crawler.crawl()
-print '[%.2f] collected %d dependancies in %d files' % (time.time(),
+print('[%.2f] collected %d dependancies in %d files' % (time.time(),
                                                         crawler.get_total_dependencies(),
-                                                        crawler.get_total_files())
+                                                        crawler.get_total_files()))
 
 # generate graphs
 generated_files = list()
 for filename in crawler.get_files():
     file_stats = crawler.file_info(filename)
     if file_stats['levels'] > 1:
-        print '[%.2f] ... writing %s' % (time.time(), filename)
+        print('[%.2f] ... writing %s' % (time.time(), filename))
         dot_filename = ('%s/%s.dot' % (target_directory, filename)).replace('//', '/')
         target_filename = dot_filename.replace('.dot', '.png')
         open(dot_filename, 'w').write(crawler.generate_dot(filename))
@@ -65,8 +65,8 @@ for filename in crawler.get_files():
         generated_files.append(os.path.basename(target_filename))
     else:
         # not interested, item has no children.
-        print '[%.2f] ... skip %s' % (time.time(), filename)
+        print('[%.2f] ... skip %s' % (time.time(), filename))
 
 # write a simple index page for our generated files
 open(('%s/index.html' % target_directory).replace('//', '/'), 'w').write(crawler.generate_index_html(generated_files))
-print '[%.2f] done (all results in %s)' % (time.time(), target_directory)
+print('[%.2f] done (all results in %s)' % (time.time(), target_directory))

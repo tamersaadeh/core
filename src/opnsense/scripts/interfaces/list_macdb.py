@@ -45,9 +45,9 @@ if __name__ == '__main__':
 
     if len(sys.argv) > 1 and sys.argv[1] == 'json':
         # output json
-        print(ujson.dumps(result))
+        print((ujson.dumps(result)))
     else:
         # output plain text (console)
-        print ('%-6s %s' % ('prefix', 'manufacturer'))
+        print(('%-6s %s' % ('prefix', 'manufacturer')))
         for mac_prefix in result:
-            print ('%s %s' % (mac_prefix, result[mac_prefix]))
+            print(('%s %s' % (mac_prefix, result[mac_prefix])))

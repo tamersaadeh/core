@@ -172,18 +172,18 @@ if len(sys.argv) > 1 and 'console' in sys.argv[1:]:
     if 'profile' in sys.argv[1:]:
         # start with profiling
         import cProfile
-        import StringIO
+        import io
         import pstats
 
         pr = cProfile.Profile(builtins=False)
         pr.enable()
         Main()
         pr.disable()
-        s = StringIO.StringIO()
+        s = io.StringIO()
         sortby = 'cumulative'
         ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
         ps.print_stats()
-        print s.getvalue()
+        print(s.getvalue())
     else:
         Main()
 else:

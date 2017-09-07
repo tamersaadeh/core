@@ -65,11 +65,11 @@ if __name__ == '__main__':
 
     # handle command line argument (type selection)
     if len(sys.argv) > 1 and 'json' in sys.argv:
-        print(ujson.dumps(result))
+        print((ujson.dumps(result)))
     else:
         print ('[contents of netflow cache]')
         for netflow_node in result:
-            print ('node : %s' % netflow_node)
-            print ('  #source addresses        : %d' % result[netflow_node]['SrcIPaddresses'])
-            print ('  #destination addresses   : %d' % result[netflow_node]['DstIPaddresses'])
-            print ('  #packets                 : %d' % result[netflow_node]['Pkts'])
+            print(('node : %s' % netflow_node))
+            print(('  #source addresses        : %d' % result[netflow_node]['SrcIPaddresses']))
+            print(('  #destination addresses   : %d' % result[netflow_node]['DstIPaddresses']))
+            print(('  #packets                 : %d' % result[netflow_node]['Pkts']))

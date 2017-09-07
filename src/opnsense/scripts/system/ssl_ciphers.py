@@ -59,4 +59,4 @@ if __name__ == '__main__':
                 if cipher_id in rfc5246:
                     item['description'] = rfc5246[cipher_id]['description']
                 result[cipher_key] = item
-    print ujson.dumps(result)
+    print(ujson.dumps(result))

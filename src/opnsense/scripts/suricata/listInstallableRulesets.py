@@ -33,8 +33,8 @@
 import os
 import os.path
 import ujson
-from lib import metadata
-from lib import rule_source_directory
+from .lib import metadata
+from .lib import rule_source_directory
 
 md = metadata.Metadata()
 if __name__ == '__main__':
@@ -50,4 +50,4 @@ if __name__ == '__main__':
             items[rule['filename']]['modified_local'] = None
     result = {'items': items, 'count': len(items)}
     result['properties'] = md.list_rule_properties()
-    print (ujson.dumps(result))
+    print((ujson.dumps(result)))

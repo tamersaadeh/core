@@ -106,7 +106,7 @@ class TestCoreMethods(unittest.TestCase):
                                                   action_handler=self.act_handler,
                                                   simulation_mode=False)
         cmd_thread.run()
-        self.assertEquals(self.dummysock.getReceived()[-4:], '\n%c%c%c' % (chr(0), chr(0), chr(0)), "Invalid sequence")
+        self.assertEqual(self.dummysock.getReceived()[-4:], '\n%c%c%c' % (chr(0), chr(0), chr(0)), "Invalid sequence")
 
     def test_command_unknown(self):
         """ test invalid command
@@ -118,7 +118,7 @@ class TestCoreMethods(unittest.TestCase):
                                                   action_handler=self.act_handler,
                                                   simulation_mode=False)
         cmd_thread.run()
-        self.assertEquals(self.dummysock.getReceived().split('\n')[0], 'Action not found', 'Invalid response')
+        self.assertEqual(self.dummysock.getReceived().split('\n')[0], 'Action not found', 'Invalid response')
 
     def test_configd_actions(self):
         """ request configd command list

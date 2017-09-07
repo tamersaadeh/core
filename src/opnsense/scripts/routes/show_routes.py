@@ -54,7 +54,7 @@ if __name__ == '__main__':
             elif len(fields) == 1 and  fields[0] == 'Internet6:':
                 current_proto = 'ipv6'
             elif len(fields) > 2 and fields[0] == 'Destination' and fields[1] == 'Gateway':
-                fieldnames = map(lambda x : x.lower(), fields)
+                fieldnames = [x.lower() for x in fields]
             elif len(fields) > 2:
                 record = {'proto': current_proto}
                 for fieldid in range(len(fields)):
@@ -68,12 +68,12 @@ if __name__ == '__main__':
 
     # handle command line argument (type selection)
     if len(sys.argv) > 1 and 'json' in sys.argv:
-        print(ujson.dumps(result))
+        print((ujson.dumps(result)))
     else:
         # output plain
-        print ('\t\t'.join(fieldnames))
+        print(('\t\t'.join(fieldnames)))
         frmt = "%(proto)s\t"
         for fieldname in fieldnames:
             frmt = frmt + "%("+fieldname+")s\t"
         for record in result:
-            print (frmt%record)
+            print((frmt%record))

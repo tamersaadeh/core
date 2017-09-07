@@ -58,6 +58,6 @@ if parameters['sessionid'] is not None and parameters['zoneid'] is not None:
 # output result as plain text or json
 if parameters['output_type'] != 'json':
     for item in response:
-        print '%20s %s' % (item, response[item])
+        print('%20s %s' % (item, response[item]))
 else:
-    print(ujson.dumps(response))
+    print((ujson.dumps(response)))

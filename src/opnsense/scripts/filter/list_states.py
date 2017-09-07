@@ -108,18 +108,18 @@ if __name__ == '__main__':
 
     # handle command line argument (type selection)
     if inputargs.output == 'json':
-        print(ujson.dumps(result))
+        print((ujson.dumps(result)))
     else:
         # output plain
         print ('------------------------- STATES -------------------------')
         for state in result['details']:
             if state['ipproto'] == 'ipv4':
                 if state['nat_addr'] is not None:
-                    print ('%(iface)s %(proto)s %(src_addr)s:%(src_port)s \
-  (%(nat_addr)s:%(nat_port)s) %(direction)s %(dst_addr)s:%(dst_port)s %(state)s' % state)
+                    print(('%(iface)s %(proto)s %(src_addr)s:%(src_port)s \
+  (%(nat_addr)s:%(nat_port)s) %(direction)s %(dst_addr)s:%(dst_port)s %(state)s' % state))
                 else:
-                    print ('%(iface)s %(proto)s %(src_addr)s:%(src_port)s \
-  %(direction)s %(dst_addr)s:%(dst_port)s %(state)s' % state)
+                    print(('%(iface)s %(proto)s %(src_addr)s:%(src_port)s \
+  %(direction)s %(dst_addr)s:%(dst_port)s %(state)s' % state))
             else:
-                print ('%(iface)s %(proto)s %(src_addr)s[%(src_port)s] \
-  %(direction)s %(dst_addr)s[%(dst_port)s] %(state)s' % state)
+                print(('%(iface)s %(proto)s %(src_addr)s[%(src_port)s] \
+  %(direction)s %(dst_addr)s[%(dst_port)s] %(state)s' % state))

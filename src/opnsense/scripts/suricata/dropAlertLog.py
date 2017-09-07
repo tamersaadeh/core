@@ -32,7 +32,7 @@
 import os
 import sys
 import glob
-from lib import suricata_alert_log
+from .lib import suricata_alert_log
 
 if __name__ == '__main__' and len(sys.argv) > 1:
     result = []
@@ -45,4 +45,4 @@ if __name__ == '__main__' and len(sys.argv) > 1:
             else:
                 # archive, remove
                 os.remove(filename)
-            print ("removed %s" % filename)
+            print(("removed %s" % filename))

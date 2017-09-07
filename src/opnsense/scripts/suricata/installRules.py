@@ -30,8 +30,8 @@
     Install suricata ruleset into opnsense.rules directory
 """
 import os.path
-import lib.rulecache
-from lib import rule_source_directory
+from . import lib.rulecache
+from .lib import rule_source_directory
 
 if __name__ == '__main__':
     RuleCache = lib.rulecache.RuleCache()

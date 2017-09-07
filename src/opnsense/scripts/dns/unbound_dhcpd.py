@@ -95,7 +95,7 @@ def main():
         if time.time() - last_cleanup > cleanup_interval:
             # cleanup every x seconds
             last_cleanup = time.time()
-            addresses = cached_leases.keys()
+            addresses = list(cached_leases.keys())
             for address in addresses:
                 if cached_leases[address]['ends'] < time.time():
                     del cached_leases[address]

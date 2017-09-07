@@ -44,4 +44,4 @@ for lease in dhcpdleases.watch():
     if 'ends' not in lease or lease['ends'] is None or lease['ends'] > time.time() or app_params['inactive'] != '0':
         result.append(lease)
 
-print (ujson.dumps(result))
+print((ujson.dumps(result)))

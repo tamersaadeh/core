@@ -33,10 +33,10 @@
 import os
 import sys
 import fcntl
-from ConfigParser import ConfigParser
-from lib import metadata
-from lib import downloader
-from lib import rule_source_directory
+from configparser import ConfigParser
+from .lib import metadata
+from .lib import downloader
+from .lib import rule_source_directory
 
 # check for a running update process, this may take a while so it's better to check...
 try:

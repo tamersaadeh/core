@@ -48,7 +48,7 @@ if __name__ == '__main__':
 
     # handle command line argument (type selection)
     if len(sys.argv) > 2 and sys.argv[2] == 'json':
-        print(ujson.dumps(result))
+        print((ujson.dumps(result)))
     else:
         # output plain
         for table in result:

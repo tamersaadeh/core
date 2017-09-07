@@ -89,4 +89,4 @@ for filename in glob.glob('%s/*.xml' % rrd_definition_dir):
                 for fieldname in rrdDef:
                     result[rrdFilename][fieldname] = rrdDef[fieldname]
 
-print(ujson.dumps(result))
+print((ujson.dumps(result)))

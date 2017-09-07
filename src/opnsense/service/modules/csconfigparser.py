@@ -29,7 +29,7 @@
     function: make standard config parser case sensitive
 """
 
-from ConfigParser import ConfigParser
+from configparser import ConfigParser
 
 
 class CSConfigParser(ConfigParser):

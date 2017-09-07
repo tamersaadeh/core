@@ -65,13 +65,13 @@ if __name__ == '__main__':
 
     # handle command line argument (type selection)
     if len(sys.argv) > 1 and sys.argv[1] == 'json':
-        print(ujson.dumps(result))
+        print((ujson.dumps(result)))
     else:
         # output plain
         if 'interrupts' in result:
             for intr in result['interrupts']:
-                print ('%-10s [%-20s] %-10d %d' % (intr,
+                print(('%-10s [%-20s] %-10d %d' % (intr,
                                           ','.join(result['interrupts'][intr]['devices']),
                                           result['interrupts'][intr]['total'],
                                           result['interrupts'][intr]['rate']
-                                          ))
+                                          )))

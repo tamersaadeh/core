@@ -38,10 +38,10 @@ import gzip
 import zipfile
 import syslog
 if sys.version_info < (3, 0):
-    from ConfigParser import ConfigParser
-    from urllib2 import urlopen
-    from urllib2 import URLError
-    from urllib2 import HTTPError
+    from configparser import ConfigParser
+    from urllib.request import urlopen
+    from urllib.error import URLError
+    from urllib.error import HTTPError
 else:
     from configparser import ConfigParser
     from urllib.request import urlopen

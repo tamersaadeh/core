@@ -69,9 +69,9 @@ if valid_params:
                 column_names = dict()
                 for record in obj.get_data(start_time, end_time):
                     if rownum == 0:
-                        column_names = record.keys()
+                        column_names = list(record.keys())
                         # dump heading
-                        print (','.join(column_names))
+                        print((','.join(column_names)))
                     line = list()
                     for item in column_names:
                         if not record[item]:
@@ -86,14 +86,14 @@ if valid_params:
                             line.append('%d' % record[item])
                         else:
                             line.append(record[item])
-                    print (','.join(line))
+                    print((','.join(line)))
                     rownum += 1
 else:
     print ('missing parameters :')
     tmp = list()
     for key in app_params:
         tmp.append('/%s %s' % (key, app_params[key]))
-    print ('  %s %s'%(sys.argv[0], ' '.join(tmp)))
+    print(('  %s %s'%(sys.argv[0], ' '.join(tmp))))
     print ('')
     print ('  resolution : sample rate in seconds')
     print ('  start_time : start time (seconds since epoch)')

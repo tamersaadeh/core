@@ -109,13 +109,13 @@ if valid_params:
                                                'resolution': resolution}
             start_time += resolution
 
-    print (ujson.dumps(timeseries))
+    print((ujson.dumps(timeseries)))
 else:
     print ('missing parameters :')
     tmp = list()
     for key in app_params:
         tmp.append('/%s %s' % (key, app_params[key]))
-    print ('  %s %s'%(sys.argv[0], ' '.join(tmp)))
+    print(('  %s %s'%(sys.argv[0], ' '.join(tmp))))
     print ('')
     print ('  resolution : sample rate in seconds')
     print ('  start_time : start time (seconds since epoch)')

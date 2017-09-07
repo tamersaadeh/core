@@ -73,9 +73,9 @@ if __name__ == '__main__':
 
     # handle command line argument (type selection)
     if len(sys.argv) > 1 and sys.argv[1] == 'json':
-        print(ujson.dumps(result))
+        print((ujson.dumps(result)))
     else:
         # output plain
         print ('------------------------- COUNTERS -------------------------')
         for intf in result:
-            print ('[%s] %s' % (intf, unicode(result[intf])))
+            print(('[%s] %s' % (intf, str(result[intf]))))

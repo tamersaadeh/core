@@ -67,7 +67,7 @@ for conns in s.list_conns():
         result[connection_id]['local-class'] = []
         result[connection_id]['remote-class'] = []
         # parse local-% and remote-% keys
-        for connKey in conns[connection_id].keys():
+        for connKey in list(conns[connection_id].keys()):
             if connKey.find('local-') == 0:
                 if 'id' in conns[connection_id][connKey]:
                     result[connection_id]['local-id'] = conns[connection_id][connKey]['id']
@@ -87,4 +87,4 @@ for sas in s.list_sas():
             result[sa]['routed'] = False
         result[sa]['sas'].append(sas[sa])
 
-print (ujson.dumps(result))
+print((ujson.dumps(result)))

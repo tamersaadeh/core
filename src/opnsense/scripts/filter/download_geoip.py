@@ -84,4 +84,4 @@ if __name__ == '__main__':
                                 output_handles[country_code].close()
 
             # output files and lines processed
-            print ('%d files written, with a total number of %d lines' % (file_count, address_count))
+            print(('%d files written, with a total number of %d lines' % (file_count, address_count)))

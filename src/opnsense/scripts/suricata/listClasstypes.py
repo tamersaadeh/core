@@ -31,7 +31,7 @@
 """
 
 import ujson
-from lib.rulecache import RuleCache
+from .lib.rulecache import RuleCache
 
 if __name__ == '__main__':
     rc = RuleCache()
@@ -41,4 +41,4 @@ if __name__ == '__main__':
     items = rc.list_class_types()
     result = {'items': items, 'count': len(items)}
 
-    print (ujson.dumps(result))
+    print((ujson.dumps(result)))

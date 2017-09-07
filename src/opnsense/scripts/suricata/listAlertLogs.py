@@ -35,8 +35,8 @@ import glob
 import ujson
 import time
 import datetime
-from lib import suricata_alert_log
-from lib.log import reverse_log_reader
+from .lib import suricata_alert_log
+from .lib.log import reverse_log_reader
 
 if __name__ == '__main__':
     result = []
@@ -68,4 +68,4 @@ if __name__ == '__main__':
             result.append(row)
 
     # output results
-    print(ujson.dumps(result))
+    print((ujson.dumps(result)))

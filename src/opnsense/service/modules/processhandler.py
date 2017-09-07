@@ -34,13 +34,13 @@ import socket
 import traceback
 import syslog
 import threading
-import ConfigParser
+import configparser
 import glob
 import time
 import uuid
 import shlex
 import tempfile
-import ph_inline_actions
+from . import ph_inline_actions
 from modules import singleton
 
 __author__ = 'Ad Schellevis'
@@ -126,7 +126,7 @@ class Handler(object):
                 return
             except Exception:
                 # something went wrong... send traceback to syslog, restart listener (wait for a short time)
-                print (traceback.format_exc())
+                print((traceback.format_exc()))
                 syslog.syslog(syslog.LOG_ERR, 'Handler died on %s' % traceback.format_exc())
                 time.sleep(1)
 
@@ -205,7 +205,7 @@ class HandlerClient(threading.Thread):
                     syslog.syslog(syslog.LOG_INFO, "message %s [%s.%s] returned %s " % (self.message_uuid,
                                                                                         exec_command,
                                                                                         exec_action,
-                                                                                        unicode(result)[:100]))
+                                                                                        str(result)[:100]))
 
             # send end of stream characters
             if not exec_in_background:
@@ -214,7 +214,7 @@ class HandlerClient(threading.Thread):
             # ignore system exit related errors
             pass
         except Exception:
-            print (traceback.format_exc())
+            print((traceback.format_exc()))
             syslog.syslog(
                     syslog.LOG_ERR,
                     'unable to sendback response [%s] for [%s][%s][%s] {%s}, message was %s' % (result,
@@ -266,7 +266,7 @@ class ActionHandler(object):
                 self.action_map[topic_name] = {}
 
             # traverse config directory and open all filenames starting with actions_
-            cnf = ConfigParser.RawConfigParser()
+            cnf = configparser.RawConfigParser()
             cnf.read(config_filename)
             for section in cnf.sections():
                 # map configuration data on object
@@ -369,8 +369,8 @@ class ActionHandler(object):
         """
         action_obj = self.find_action(command, action, parameters)
         print ('---------------------------------------------------------------------')
-        print ('execute %s.%s with parameters : %s ' % (command, action, parameters))
-        print ('action object %s (%s) %s' % (action_obj, action_obj.command, message_uuid))
+        print(('execute %s.%s with parameters : %s ' % (command, action, parameters)))
+        print(('action object %s (%s) %s' % (action_obj, action_obj.command, message_uuid)))
         print ('---------------------------------------------------------------------')
 
 

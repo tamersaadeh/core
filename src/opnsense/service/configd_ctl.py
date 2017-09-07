@@ -55,7 +55,7 @@ def exec_config_cmd(exec_command):
         sock.connect(configd_socket_name)
     except socket.error:
         syslog.syslog(syslog.LOG_ERR,'unable to connect to configd socket (@%s)'%configd_socket_name)
-        print('unable to connect to configd socket (@%s)'%configd_socket_name)
+        print(('unable to connect to configd socket (@%s)'%configd_socket_name))
         return None
 
     try:
@@ -86,7 +86,7 @@ socket.setdefaulttimeout(120)
 
 # validate parameters
 if len(sys.argv) <= 1:
-    print ('usage : %s [-m] <command>'%sys.argv[0])
+    print(('usage : %s [-m] <command>'%sys.argv[0]))
     sys.exit(0)
 
 # check if configd socket exists
@@ -99,7 +99,7 @@ while not os.path.exists(configd_socket_name):
     i += 1
 
 if not os.path.exists(configd_socket_name):
-    print ('configd socket missing (@%s)'%configd_socket_name)
+    print(('configd socket missing (@%s)'%configd_socket_name))
     sys.exit(-1)
 
 if sys.argv[1] == '-m':
@@ -108,11 +108,11 @@ if sys.argv[1] == '-m':
         result=exec_config_cmd(exec_command=exec_command)
         if result is None:
             sys.exit(-1)
-        print('%s' % (result.strip()))
+        print(('%s' % (result.strip())))
 else:
     # execute single command sequence
     exec_command=' '.join(sys.argv[1:])
     result=exec_config_cmd(exec_command=exec_command)
     if result is None:
         sys.exit(-1)
-    print('%s' % (result.strip()))
+    print(('%s' % (result.strip())))

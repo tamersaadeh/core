@@ -30,8 +30,8 @@
 """
 
 import syslog
-import template
-import config
+from . import template
+from . import config
 
 __author__ = 'Ad Schellevis'
 
@@ -85,11 +85,11 @@ def execute(action, parameters):
             return 'ERR'
     elif action.command == 'configd.actions':
         # list all available configd actions
-        from processhandler import ActionHandler
+        from .processhandler import ActionHandler
         act_handler = ActionHandler()
         actions = act_handler.list_actions(['message', 'description'])
 
-        if unicode(parameters).lower() == 'json':
+        if str(parameters).lower() == 'json':
             import json
             return json.dumps(actions)
         else:

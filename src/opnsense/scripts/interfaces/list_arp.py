@@ -75,9 +75,9 @@ if __name__ == '__main__':
 
     # handle command line argument (type selection)
     if len(sys.argv) > 1 and sys.argv[1] == 'json':
-        print(ujson.dumps(result))
+        print((ujson.dumps(result)))
     else:
         # output plain text (console)
-        print ('%-16s %-20s %-10s %-20s %s' % ('ip', 'mac', 'intf', 'hostname', 'manufacturer'))
+        print(('%-16s %-20s %-10s %-20s %s' % ('ip', 'mac', 'intf', 'hostname', 'manufacturer')))
         for record in result:
-            print ('%(ip)-16s %(mac)-20s %(intf)-10s %(hostname)-20s %(manufacturer)s' % record)
+            print(('%(ip)-16s %(mac)-20s %(intf)-10s %(hostname)-20s %(manufacturer)s' % record))

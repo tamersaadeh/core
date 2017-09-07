@@ -33,13 +33,13 @@ import sys
 import ujson
 import binascii
 import zipfile
-import StringIO
+import io
 from lib import OPNSenseConfig
 
 response = dict()
 source_directory = '/usr/local/opnsense/scripts/OPNsense/CaptivePortal/htdocs_default'
 
-output_data = StringIO.StringIO()
+output_data = io.StringIO()
 
 with zipfile.ZipFile(output_data, mode='w', compression=zipfile.ZIP_DEFLATED) as zf:
     # overlay user template data
@@ -52,7 +52,7 @@ with zipfile.ZipFile(output_data, mode='w', compression=zipfile.ZIP_DEFLATED) as
         template_content = cnf.get_template(sys.argv[1])
         if template_content is not None:
             try:
-                input_data = StringIO.StringIO(template_content.decode('base64'))
+                input_data = io.StringIO(template_content.decode('base64'))
                 with zipfile.ZipFile(input_data, mode='r', compression=zipfile.ZIP_DEFLATED) as zf_in:
                     for zf_info in zf_in.infolist():
                         user_filenames.append(zf_info.filename)
@@ -74,4 +74,4 @@ with zipfile.ZipFile(output_data, mode='w', compression=zipfile.ZIP_DEFLATED) as
 
 response['payload'] = output_data.getvalue().encode('base64')
 response['size'] = len(response['payload'])
-print(ujson.dumps(response))
+print((ujson.dumps(response)))

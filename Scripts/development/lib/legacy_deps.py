@@ -248,6 +248,6 @@ class DependancyCrawler(object):
     def generate_index_html(filelist):
         html_body = "<html><head><title></title></head><body><table><tr><th>Name</th></tr>\n%s</body>"
         html_row = '<tr><td><a href="%s">%s</a></td></tr>\n'
-        html = html_body % ('\n'.join(map(lambda x: html_row % (x, x), sorted(filelist))))
+        html = html_body % ('\n'.join([html_row % (x, x) for x in sorted(filelist)]))
 
         return html

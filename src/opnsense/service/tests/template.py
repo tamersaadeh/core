@@ -52,7 +52,7 @@ class TestConfigMethods(unittest.TestCase):
         """ test correct config type
         :return:
         """
-        self.assertEquals(type(self.conf.get()), collections.OrderedDict)
+        self.assertEqual(type(self.conf.get()), collections.OrderedDict)
 
     def test_interface(self):
         """ test existence of interface
@@ -94,7 +94,7 @@ class TestTemplateMethods(unittest.TestCase):
         :return:
         """
         generated_filenames = self.tmpl.generate('OPNsense.Sample')
-        self.assertEquals(len(generated_filenames), 3, 'number of output files <> 3')
+        self.assertEqual(len(generated_filenames), 3, 'number of output files <> 3')
 
     def test_all(self):
         """ Test if all expected templates are created, can only find test for static defined cases.

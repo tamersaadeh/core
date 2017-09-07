@@ -35,9 +35,9 @@ import re
 import sre_constants
 import shlex
 import ujson
-from lib.log import reverse_log_reader
-from lib.params import update_params
-from lib import suricata_alert_log
+from .lib.log import reverse_log_reader
+from .lib.params import update_params
+from .lib import suricata_alert_log
 
 if __name__ == '__main__':
     # handle parameters
@@ -126,4 +126,4 @@ if __name__ == '__main__':
                 break
 
     # output results
-    print(ujson.dumps(result))
+    print((ujson.dumps(result)))
